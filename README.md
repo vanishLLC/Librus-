@@ -1,11 +1,13 @@
-# librus module for Concierge bot
+# Librus-
 
-This is a module for chat bot [Concierge](https://github.com/concierge/Concierge) displaying some information from Librus, Polish electronic online school register.
-
-You can use it in you class group chat, it supports facebook!
+# PL🇵🇱
+Awięc stowrzyłem bota do librusa. Czemu? Dobre pytanie nudziło mi się a jestem zbyt leniwy by sprawdzać na komputerze informacje
 
 ## Features
+# ENG 🇺🇸/🇬🇧
+Soo basiclly i created a bot for librus. Why? you can ask. Good question I was bored and too lazy to check librus on my pc / phone
 
+# Some things from fork
 * commands:
   * /sn - Wyświetl aktualny szczęścliwy numerek pobrany z Librusa
   * /dzisiaj - Wyświetl listę dzisiejszych lekcji w jednej linijcie (wraz z godziną rozpoczęcia) pobanych z Librusa
