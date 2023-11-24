@@ -1,17 +1,35 @@
 /**
  * Hello There! Don't look down here, it's just a bunch of code that You don't want to see.
  */
-
-"use strict";
+const Eris = require("eris");
 const Librus = require("librus-api");
-const Discord = require("discord.js");
 
 let client = new Librus();
-client.authorize("login", "password").then(function () {
-//Listing Receivers
-    client.inbox.listReceivers("nauczyciel").then((data) => {});
+let bot = new Eris.CommandClient("your_bot_token_here", {}, {
+    description: "A bot using Eris and librus-api",
+    owner: "vanishdeveloper",
+    prefix: "/"
+});
 
-    //Listing announcements
-    client.inbox.listAnnouncements().then((data) => {});
+bot.registerCommand("today", (msg) => {
+    return client.authorize("login", "pass").then(function () {
+        // important things
+        let numerekPromise = client.getNumerek();
+        let planPromise = client.getPlan();
+        let wiadomosciPromise = client.getWiadomosci();
 
-})
+        return Promise.all([numerekPromise, planPromise, wiadomosciPromise]).then(values => {
+            let embed = {
+                title: "Today's Information",
+                description: `Szczesliwy numerek: ${values[0]}\nPlan Lekcji: ${values[1]}\nWiadomosci: ${values[2]}`,
+                timestamp: new Date().toISOString()
+            };
+            bot.createMessage(msg.channel.id, { embed: embed });
+        });
+    });
+}, {
+    description: "Get today's information",
+    fullDescription: "The bot will send an embed with today's information."
+});
+
+bot.connect();
